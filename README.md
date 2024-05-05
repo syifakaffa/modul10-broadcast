@@ -47,3 +47,17 @@ WebSocket pada client. Sedangkan pada file server, port 8080 diganti pada variab
 sebagai TCP listener pada koneksi serta pada query print yang menunjukkan kalau server listening pada port 8080.
 Saat port sudah sama di kedua file, maka program akan berjalan sebagaimana mestinya seperti pada saat masih menggunakan
 port 2000.
+
+### 2.3. Small changes. Add some information to client
+**Server**
+![server-add-ip-port.png](img%2Fserver-add-ip-port.png)
+**Client 1**
+![client1-add-ip-port.png](img%2Fclient1-add-ip-port.png)
+**Client 2**
+![client2-add-ip-port.png](img%2Fclient2-add-ip-port.png)
+**Client 3**
+![client3-add-ip-port.png](img%2Fclient3-add-ip-port.png)
+
+Untuk memasukkan informasi tentang alamat IP dan port dari pengirim pada setiap klien, saya memodifikai format teks yang 
+di-broadcast dalam file server.rs. Awalnya, teks yang di-broadcast menggunakan `bcast_tx.send(text.into())?;`, tetapi 
+saya modifikasi agar mencakup alamat IP pengirim dengan menggunakan format baru `bcast_tx.send(format!("{addr} : {text}"))?;`
